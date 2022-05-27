@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: url('/img/bg.jpg');
+    background-image: url('../img/bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -59,6 +59,7 @@ body {
 #main .server_ip {
     position: relative;
     width: 100%;
+    height: 0;
 
     display: flex;
     justify-content: center;
@@ -66,8 +67,10 @@ body {
 }
 #main .server_ip input {
     position: relative;
-    width: 40%;
     height: 2em;
+    top: 1em;
+    width: 80%;
+    font-size: 16px;
     font-family: 'Minecraft', sans-serif;
     text-align: center;
     border-radius: 0;
@@ -76,13 +79,9 @@ body {
     color: white;
     border-style: solid;
 }
-#main .server_ip:hover input {
-    width: 80%;
-    font-size: 16px;
-}
 #main .server_ip span {
     position: absolute;
-    width: 40%;
+    width: 80%;
     opacity: 0;
     top: 0em;
     font-size: 14px;
@@ -90,10 +89,6 @@ body {
     color: rgb(255, 176, 72);
     padding: .2em .2em;
     z-index: -1;
-}
-#main .server_ip:hover span {
-    top: 2.5em;
-    opacity: 1;
 }
 
 /* footer section */
@@ -129,4 +124,21 @@ body {
 }
 #footer a:hover {
     text-decoration-color: rgba(255,255,255,1);
+}
+
+@media screen and (min-width: 450px) {
+    #main .server_ip input {
+        width: 40%;
+        height: 2em;
+        top: 1em;
+    }
+    #main .server_ip:hover input {
+        width: 80%;
+        font-size: 16px;
+    }
+    #main .server_ip:hover span {
+        width: 40%;
+        top: 2.5em;
+        opacity: 1;
+    }
 }
