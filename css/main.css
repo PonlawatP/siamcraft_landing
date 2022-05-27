@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;400&display=swap');
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 
+@keyframes logo {
+    0%{
+        transform: scale(1) translateY(0px);
+    }
+    50%{
+        transform: scale(1.02) translateY(-5px);
+    }
+    100%{
+        transform: scale(1) translateY(0px);
+    }
+}
+
 *{
     font-family: 'Kanit', sans-serif;
     font-weight: 200;
@@ -42,7 +54,7 @@ body {
 }
 
 #main .contain{
-    padding: 0 2em;
+    padding: 0 6em;
 }
 
 #main .cont_inside {
@@ -54,6 +66,7 @@ body {
 #main .contain .logo img {
     width: 60%;
     max-width: 20em;
+    animation: logo 5s infinite;
 }
 
 #main .server_ip {
@@ -90,6 +103,11 @@ body {
     padding: .2em .2em;
     z-index: -1;
 }
+#main .server_ip:hover span {
+    width: 80%;
+    top: 2.5em;
+    opacity: 1;
+}
 
 /* footer section */
 #footer {
@@ -102,6 +120,7 @@ body {
     background-color: rgba(0,0,0, 0.6);
     color: white;
     width: 100%;
+    backdrop-filter: blur(5px);
 }
 
 #footer:hover {
@@ -140,5 +159,14 @@ body {
         width: 40%;
         top: 2.5em;
         opacity: 1;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #main .contain{
+        padding: 3em 6em;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
     }
 }
