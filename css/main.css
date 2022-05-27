@@ -13,6 +13,35 @@
     }
 }
 
+@keyframes fade {
+    0%{
+        right: 0vw;
+    }
+    100%{
+        right: 100vw;
+    }
+}
+@keyframes startbg {
+    0%{
+        background-color: rgb(255, 138, 36);
+    }
+    100%{
+        background-color: rgba(47, 38, 25, 0.6);
+    }
+}
+@keyframes start {
+    0%{
+        filter: blur(5px);
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100%{
+        filter: blur(0px);
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 *{
     font-family: 'Kanit', sans-serif;
     font-weight: 200;
@@ -26,14 +55,34 @@ body {
     background-size: cover;
 }
 
+
+.slides{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.slides .slide {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    right: 0vw;
+}
+.slides .slide:nth-child(1) {
+    background-color: rgb(255, 255, 255);
+
+    z-index: 9;
+    animation: fade .5s forwards .5s;
+}
+
 .overlay {
-    background-color: rgba(47, 38, 25, 0.6);
+    background-color: rgb(255, 138, 36);
     width: 100vw;
     height: 100vh;
     position: absolute;
     z-index: -1;
     pointer-events: none;
     transition: all 0s;
+    animation: startbg 2s forwards .8s;
 }
 
 /* main section */
@@ -42,19 +91,21 @@ body {
     height: 100vh;
     word-break: keep-all;
     color: white;
+    animation: start 1s forwards .5s;
 }
 
 #main .panel{
     width: 100%;
     height: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: row wrap;
 }
 
-#main .contain{
-    padding: 0 6em;
+#main .contain {
+    padding: 0 2em;
+    height: max-content;
 }
 
 #main .cont_inside {
@@ -63,10 +114,33 @@ body {
     padding-bottom: 2em;
 }
 
-#main .contain .logo img {
+#main .contain .logo a img {
     width: 60%;
     max-width: 20em;
     animation: logo 5s infinite;
+}
+
+#main .contain .logo a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+#main .contain .logo a p {
+    position: absolute;
+    font-weight: 400;
+    bottom: 3em;
+    right: 0;
+    width: 100%;
+    z-index: 9;
+    opacity: 0;
+}
+
+#main .contain .logo a:hover img {
+    filter: blur(2px) brightness(0.6);
+}
+#main .contain .logo a:hover p {
+    opacity: 1;
 }
 
 #main .server_ip {
@@ -109,9 +183,14 @@ body {
     opacity: 1;
 }
 
+#main .landing {
+    background-color: red;
+    width: 100%;
+}
+
 /* footer section */
 #footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     display: flex;
     justify-content: center;
@@ -121,10 +200,11 @@ body {
     color: white;
     width: 100%;
     backdrop-filter: blur(5px);
+    z-index: 100;
 }
 
 #footer:hover {
-    padding: 1em 0;
+    padding: .2em 0;
 }
 
 #footer p {
